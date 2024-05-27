@@ -9,23 +9,28 @@ use Livewire\Component;
 
 class Create extends Component
 {
+
     public DisciplinaForm $form;
 
-    public function mount(Disciplina $disciplina)
-    {
+
+    public function mount(Disciplina $disciplina){
+
         $this->form->setDisciplinaModel($disciplina);
+
     }
 
     public function save()
     {
         $this->form->store();
 
-        return $this->redirectRoute('disciplinas.index', navigate: true);
+        return $this->redirectRoute('disciplinas.index', navigate: false);
     }
 
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.disciplina.create');
+        return view('livewire.disciplina.create', [
+            'form' => $this->form,
+        ]);
     }
 }

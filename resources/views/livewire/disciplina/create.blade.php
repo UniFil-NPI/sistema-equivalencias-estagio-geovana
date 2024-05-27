@@ -10,11 +10,11 @@
             <div class="w-full">
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
-                        <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Create') }} disciplina</h1>
+                        <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Cadastrar') }} disciplina</h1>
                         <p class="mt-2 text-sm text-gray-700">Cadastre uma nova {{ __('disciplina') }}.</p>
                     </div>
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                        <a type="button" wire:navigate href="{{ route('disciplinas.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
+                        <a type="button" wire:navigate href="{{ route('disciplinas.index') }}" class="block rounded-md bg-orange-unifil px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-orange-unifil-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Voltar</a>
                     </div>
                 </div>
 
@@ -24,6 +24,9 @@
                             <form method="POST" wire:submit="save" role="form" enctype="multipart/form-data">
                                 @csrf
                                 @include('livewire.disciplina.form')
+                                <div class="flex items-center gap-4 mt-10">
+                                    <x-primary-button>Cadastrar</x-primary-button>
+                                </div>
                             </form>
                         </div>
                     </div>

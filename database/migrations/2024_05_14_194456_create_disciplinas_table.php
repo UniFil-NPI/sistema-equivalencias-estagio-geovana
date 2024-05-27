@@ -17,10 +17,11 @@ return new class extends Migration
             $table->integer('ch');
             $table->string('ementa');
             $table->boolean('uc');
-            $table->boolean('ead');
-            $table->boolean('ativo');
-            $table->boolean('core');
+            $table->boolean('ead')->nullable();
+            $table->boolean('ativo')->nullable();
+            $table->boolean('core')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

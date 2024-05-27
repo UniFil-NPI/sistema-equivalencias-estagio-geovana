@@ -14,7 +14,12 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'orange-unifil': '#ff7300',
+                'orange-unifil-hover': '#F29400'
+            },
         },
+        
     },
 
     plugins: [forms],

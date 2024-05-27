@@ -10,11 +10,14 @@
             <div class="w-full">
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
+                        <!--
                         <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Disciplinas cadastradas') }}</h1>
                         <p class="mt-2 text-sm text-gray-700">Lista de {{ __('Disciplinas') }}.</p>
+                        -->
+                        <input type="text" wire:model.live="search" class="form-control col-md-4 float-left" name="search" id="search" placeholder="Buscar...">
                     </div>
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                        <a type="button" wire:navigate href="{{ route('disciplinas.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastrar</a>
+                        <a type="button" wire:navigate href="{{ route('disciplinas.create') }}" class="block rounded-md bg-orange-unifil px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-orange-unifil-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastrar</a>
                     </div>
                 </div>
 
@@ -29,7 +32,8 @@
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Nome</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">CH</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Ementa</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Unidade Curricular</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Tipo</th>
+                                    <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Ações</th>
 									<!-- 
                                     <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Ead</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Ativo</th>
@@ -41,13 +45,13 @@
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
                                 @foreach ($disciplinas as $disciplina)
-                                    <tr class="even:bg-gray-50" wire:key="{{ $disciplina->id }}">
+                                    <tr class="even:bg-gray-50 rowlink" wire:key="{{ $disciplina->id }}">
                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">{{ ++$i }}</td>
                                         
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->nome }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->ch }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->ementa }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->uc }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ ($disciplina->uc == 1) ? "Unidade Curricular" : "Disciplina" }}</td>
                                         <!--
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->ead }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $disciplina->ativo }}</td>
@@ -55,7 +59,7 @@
                                         -->
 
                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
-                                            <a wire:navigate href="{{ route('disciplinas.show', $disciplina->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
+                                            <a wire:navigate href="{{ route('disciplinas.show', $disciplina->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Mostrar') }}</a>
                                             <a wire:navigate href="{{ route('disciplinas.edit', $disciplina->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Editar') }}</a>
                                             <button
                                                 class="text-red-600 font-bold hover:text-red-900"

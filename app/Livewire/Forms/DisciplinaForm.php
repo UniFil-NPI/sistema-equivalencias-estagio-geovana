@@ -17,23 +17,35 @@ class DisciplinaForm extends Form
     public $ativo = '';
     public $core = '';
 
+
+
     public function rules(): array
     {
-        return [
-			'nome' => 'required|string',
-			'ch' => 'required',
-			'ementa' => 'required|string',
-			'uc' => 'required|boolean',
-			'ead' => 'boolean',
-			'ativo' => 'required|boolean',
-			'core' => 'required|boolean',
+        $rules = [
+            'nome' => 'required|string',
+            'ch' => 'required',
+            'ementa' => 'required|string',
+            'uc' => 'required|boolean',
         ];
+    
+        if ($this->uc == 1) {
+            $rules += [
+                'ead' => 'required|boolean',
+                'ativo' => 'required|boolean',
+                'core' => 'required|boolean',
+            ];
+        }
+    
+        return $rules;
     }
+
+
+
+
 
     public function setDisciplinaModel(Disciplina $disciplinaModel): void
     {
         $this->disciplinaModel = $disciplinaModel;
-        
         $this->nome = $this->disciplinaModel->nome;
         $this->ch = $this->disciplinaModel->ch;
         $this->ementa = $this->disciplinaModel->ementa;
@@ -43,12 +55,21 @@ class DisciplinaForm extends Form
         $this->core = $this->disciplinaModel->core;
     }
 
+    public function updateUcField(){
+        if($this->uc == '0'){
+            $this->ead = '';
+            $this->ativo = '';
+            $this->core = '';
+        }
+    }
+
     public function store(): void
     {
         $this->disciplinaModel->create($this->validate());
-
+    
         $this->reset();
     }
+
 
     public function update(): void
     {
