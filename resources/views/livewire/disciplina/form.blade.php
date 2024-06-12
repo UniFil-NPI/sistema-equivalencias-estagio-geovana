@@ -90,11 +90,11 @@
         @error('form.core')
             <x-input-error class="mt-2" :messages="$message"/>
         @enderror
-    </div>        
-    @script
-    <script>
+    </div>  
 
-           $wire.on('clear', function () {
+    @script
+        <script>
+            $wire.on('clear', function () {
                 let presencial = document.getElementById('presencial')
                 presencial.checked = false;
                 presencial.classList.add('disabled-radio');
@@ -124,7 +124,6 @@
             $wire.on('allow', function () {
                 let presencial = document.getElementById('presencial')
                 presencial.classList.remove('disabled-radio');
-                presencial.classList.remove('disabled-radio');
 
                 let ucd = document.getElementById('ucd')
                 ucd.classList.remove('disabled-radio');
@@ -141,17 +140,14 @@
                 let flex = document.getElementById('flex')
                 flex.classList.remove('disabled-radio');
             });
-    
-    </script>
-@endscript
+        </script>
+    @endscript
 
-<style>
-    .disabled-radio {
-        background-color: #e0e0e0;
-        opacity: 0.6;
-    }
-</style>
+    <style>
+        .disabled-radio {
+            background-color: #e0e0e0;
+            opacity: 0.6;
+        }
+    </style>
 
-    
-    
 </div>

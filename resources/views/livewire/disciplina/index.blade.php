@@ -10,11 +10,13 @@
             <div class="w-full">
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
-                        <!--
+                        
                         <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Disciplinas cadastradas') }}</h1>
                         <p class="mt-2 text-sm text-gray-700">Lista de {{ __('Disciplinas') }}.</p>
-                        -->
+                        
+                        <!--
                         <input type="text" wire:model.live="search" class="form-control col-md-4 float-left" name="search" id="search" placeholder="Buscar...">
+                        -->
                     </div>
                     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                         <a type="button" wire:navigate href="{{ route('disciplinas.create') }}" class="block rounded-md bg-orange-unifil px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-orange-unifil-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastrar</a>
